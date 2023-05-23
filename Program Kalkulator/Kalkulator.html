@@ -1,0 +1,132 @@
+<!--- 
+	Silahkan dilengkapi kodingan ini agar kalkulator ini bisa berfungsi
+	nb : tidak menerima plagiarism
+---->
+<!--- 
+	Muhamad Fadly Febrian
+	2110512003
+	Kelas A 
+	Pertemuan 5
+---->
+
+<!DOCTYPE html> 
+<html lang="en"> 
+	<head> 
+		<meta charset="UTF-8"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Kalkulator</title> 
+		
+		<!--- css beda dokumen -->
+		<link rel="stylesheet" href="style.css"> 
+		<script type="text/javascript"> 
+			function sec(masukan) { 
+				if(document.getElementById("result").innerHTML == 0){
+					angka = ""
+				}else{
+					angka = document.getElementById("result").innerHTML;
+				}
+				angka = angka + masukan; 
+				document.getElementById("result").innerHTML = angka;
+			}
+			function periksa() { 
+				if (isNaN(eval(hasil)) !== false) { 
+					alert("data yang dimasukan salah") 
+				}
+			}
+			function tambah() { 
+				if (angka.endsWith('+') || angka.endsWith('-') || angka.endsWith('*') || angka.endsWith('/') === true){
+				currentNumber = angka.substr(0, angka.length - 1);
+				currentNumber = currentNumber + "+" 
+				document.getElementById("result").innerHTML = currentNumber
+				}else{
+				angka = angka + "+" 
+				document.getElementById("result").innerHTML = angka
+				}
+			}
+			function kurang() { 
+				if (angka.endsWith('+') || angka.endsWith('-') || angka.endsWith('*') || angka.endsWith('/') === true){
+				currentNumber = angka.substr(0, angka.length - 1);
+				currentNumber = currentNumber + "-" 
+				document.getElementById("result").innerHTML = currentNumber
+				}else{
+				angka = angka + "-" 
+				document.getElementById("result").innerHTML = angka
+				}
+			}
+			function kali() { 
+				if (angka.endsWith('+') || angka.endsWith('-') || angka.endsWith('*') || angka.endsWith('/') === true){
+				currentNumber = angka.substr(0, angka.length - 1);
+				currentNumber = currentNumber + "*" 
+				document.getElementById("result").innerHTML = currentNumber
+				}else{
+				angka = angka + "*" 
+				document.getElementById("result").innerHTML = angka
+				}
+			}
+			function bagi() { 
+				if (angka.endsWith('+') || angka.endsWith('-') || angka.endsWith('*') || angka.endsWith('/') === true){
+				currentNumber = angka.substr(0, angka.length - 1);
+				currentNumber = currentNumber + "/" 
+				document.getElementById("result").innerHTML = currentNumber
+				}else{
+				angka = angka + "/" 
+				document.getElementById("result").innerHTML = angka
+				}
+			}
+			function count() { 
+				hasil = getCurrentResult()
+				periksa();
+				document.getElementById("result").innerHTML = eval(hasil)
+			}
+			// Fungsi untuk mendapatkan text di elemen result saat ini, textnya akan di return // Contoh penggunaan: let a = getCurrentResult(); 
+			const getCurrentResult = () => { 
+				return document.getElementById('result').textContent; // Variabel berisi 
+			} 
+			//Fungsi untuk mengganti tulisan di area result 
+			const display = (text) => { 
+				const result = document.getElementById('result'); //Elemen ber-Id "result" 
+				result.textContent = text; 
+			}; 
+			
+			//Fungsi untuk mereset result
+			function clr(){ 
+				display(0); 
+			}; 
+			function del(){
+				const output = document.getElementById("result").innerHTML;
+				if (output) {
+					currentNumber = output.substr(0, output.length - 1);
+					display(currentNumber);
+				};
+			}
+		</script>
+	</head> 
+	
+	<body> 
+		<div class="container"> 
+			<div class="item black" id="result">0</div> 
+			<!-- Fungsi display() menampilkan teks disini ditampilkan disini--> 
+			<div class="item grey" id="clear" onclick="clr()">C</div>
+
+			<div class="item grey" id="del" onclick="del()">←</div> 
+			<div class="item orange" id="div" onclick="bagi()">÷</div> 
+			<div class="item grey" id="seven" onclick="sec(7)">7</div> 
+			<!-- atribut onclick akan memanggil fungsi Javascript ketika elemen diklik--> 
+			<div class="item grey" id="eight" onclick="sec(8)">8</div> 
+			<div class="item grey" id="nine" onclick="sec(9)">9</div> 
+			<div class="item orange" id="times" onclick="kali()">×</div> 
+			<div class="item grey" id="four" onclick="sec(4)">4</div> 
+			<div class="item grey" id="five" onclick="sec(5)">5</div> 
+			<div class="item grey" id="six" onclick="sec(6)">6</div> 
+			<div class="item orange" id="min" onclick="kurang()">–</div> 
+			<div class="item grey" id="one" onclick="sec(1)">1</div> 
+			<div class="item grey" id="two" onclick="sec(2)">2</div> 
+			<div class="item grey" id="three" onclick="sec(3)">3</div> 
+			<div class="item orange" id="plus" onclick="tambah()">+</div> 
+			<div class="item grey" id="zero" onclick="sec(0)">0</div> 
+			<div class="item orange" id="equal" onclick="count()">=</div> 
+		</div> 
+	</body> 
+</html> 
+
